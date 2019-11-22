@@ -54,14 +54,14 @@ listaConvidados:
 
 listaServicos:
     'servicos:' '['
-          'fotografo:' fotografo
-        | 'buffet:' buffet
-        | 'cerimonial:' cerimonial
-        | 'local:' local
-        | 'musica:' musica
-        | 'decoracao:' decoracao
-        | 'convites:' convites
-        | 'lua_de_mel:' lua_de_mel
+          'fotografo:' fotografo+
+          'buffet:' buffet+
+          'cerimonial:' cerimonial+
+          'local:' local+
+          'musica:' musica+
+          'decoracao:' decoracao+
+          'convites:' convites+
+          'lua_de_mel:' lua_de_mel+
     ']'
 ;
 
@@ -116,7 +116,7 @@ decoracao:
         'nome:' STRING
         'contato:' NUM_INT
         'preco:' 'R$' NUM_REAL
-        ('itens_decoracao:' STRING)?
+        'itens_decoracao:' STRING(',' STRING)*
     '}'
 ;
 
