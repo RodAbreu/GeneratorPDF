@@ -53,7 +53,7 @@ listaConvidados:
 ;
 
 listaServicos:
-    'servicos:' '['
+    'servicos:' '{'
           'fotografo:' fotografo+
           'buffet:' buffet+
           'cerimonial:' cerimonial+
@@ -62,13 +62,13 @@ listaServicos:
           'decoracao:' decoracao+
           'convites:' convites+
           'lua_de_mel:' lua_de_mel+
-    ']'
+    '}'
 ;
 
 fotografo:
     '{'
-        'nome:' STRING
-        'contato:' NUM_INT
+        'nome:' STRING ';'
+        'contato:' NUM_INT ';'
         'preco:' 'R$' NUM_REAL
     '}'
 ;

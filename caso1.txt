@@ -17,12 +17,14 @@ convidados: [
     "Pai do João",
     "Vizinha da avó"
 ]
-servicos: [
-    fotografo: { 
-        nome: "João da foto"
-        contato: 123123123
+servicos: {
+    
+    fotografo: {
+        nome: "Joao da foto";
+        contato: 123123123;
         preco: R$ 1000,00
     }
+
     buffet: {
         nome: "Buffet pães e Cia"
         contato: 123123123
@@ -77,4 +79,4 @@ servicos: [
     }
 
 
-]
+}

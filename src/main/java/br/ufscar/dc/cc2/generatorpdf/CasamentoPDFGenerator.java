@@ -44,9 +44,8 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     public Void visitListaPresentes(casamentoParser.ListaPresentesContext ctx){
         doc.add(new Paragraph("Presentes:").setFontSize(16));
         for(int i=0; i<ctx.presente().size(); i++ ){
-            doc.add(new Paragraph(ctx.presente(i).getText()));
+            doc.add(new Paragraph(ctx.presente(i).getText()));            
         }
-        
         return super.visitListaPresentes(ctx);
     }
     
@@ -70,14 +69,23 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     @Override
     public Void visitListaServicos(casamentoParser.ListaServicosContext ctx){
         doc.add(new Paragraph("Serviços").setFontSize(16));
+        
         doc.add(new Paragraph("Fotografo").setFontSize(12));
         for(int i = 0; i < ctx.fotografo().size(); i++ ){
-            doc.add(new Paragraph(ctx.fotografo(i).getText()));
+//            doc.add(new Paragraph(ctx.fotografo(i).getText()));
+            String ola = ctx.fotografo(i).getText();
+            ola = ola.replace("{", "");
+            ola = ola.replace("}", "");
+            String[] x = ola.split(";");
+            for(int j=0; j<x.length; j++){
+                doc.add(new Paragraph(x[j]));
+            }
         }
         doc.add(new Paragraph("Convites").setFontSize(12));
         for(int i = 0; i < ctx.convites().size(); i++ ){
             doc.add(new Paragraph(ctx.convites(i).getText()));
-        }
+        }   
+        
         return super.visitListaServicos(ctx);
     }
 }
