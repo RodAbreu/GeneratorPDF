@@ -17,6 +17,7 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import t1cc2.SaidaParser;
 
 /**
  *
@@ -27,11 +28,12 @@ public class Main {
     public static void main(String args[]) throws IOException {
         String casamentoFile = args[0];
         File pdfFile = new File(args[1]);
+        SaidaParser out = new SaidaParser();
         
         //System.out.println(pdfFile.getAbsolutePath());
 
         //pdfFile.getParentFile().mkdirs();
-
+        
         FileOutputStream fos = new FileOutputStream(pdfFile);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdf = new PdfDocument(writer);
@@ -43,6 +45,12 @@ public class Main {
         casamentoParser parser = new casamentoParser(tokenStream);
         //parser.addErrorListener(new ErrorListener(out));
         casamentoParser.ProgramaContext arvore = parser.programa();
+        
+        //analise semantica
+        if(!out.isModificado()){
+            CasamentoSemanticAnalyser semantico = new CasamentoSemanticAnalyser(out);
+            semantico.visitPrograma(arvore);
+        }
 
         document.add(new Paragraph("Documento gerado"));
         
