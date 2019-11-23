@@ -1,0 +1,80 @@
+casamento: "Joao e Maria"
+convidados: 250
+data:20/10/2020
+padrinhos: [
+    pj: "Paulo e Joana"
+    cs: "Carlos e Suzana"
+]
+presentes: [
+    { "Travessa de Inox", "http://www.americanas.com/p12313", [pj, cs] }
+    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [] }
+    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [] }
+    { "Viagem para o Sul", "http://www.americanas.com/p12313", [] }
+    { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [] }
+    { "Viagem para Chácara do Lucredio  ", "http://www.americanas.com/p12313", [] }
+]
+convidados: [
+    "Pai do João",
+    "Vizinha da avó"
+]
+servicos: [
+    fotografo: { 
+        nome: "João da foto"
+        contato: 123123123
+        preco: R$ 1000,00
+    }
+    buffet: {
+        nome: "Buffet pães e Cia"
+        contato: 123123123
+        preco: R$ 37,00
+    }
+    cerimonial: {   
+        nome: "olar"
+        contato: 2311
+        preco: R$ 20,00
+    }
+
+    local: {
+    
+		nome: "Espaço Tropical"
+		endereco: "Avenida XYZ, São Paulo, 3425"
+		contato: 992747984
+        horario_inicio: 18h00
+		horario_fim: 02h00
+        preco: R$ 2000,00
+        capacidade: 300
+    }
+
+    musica: {
+        nome: "DJ GBR"
+        contato: 1699999999
+        preco: R$323,10
+        instrumento: "Nada"
+        musica: "Ai aiai ai aiaia iai ai"        
+    }
+    decoracao: {
+        nome: "GBR Decorações"
+        contato: 3213213213
+        preco: R$233,22
+        itens_decoracao: "toalha, mesa, flor"        
+    }
+
+    convites: {
+        nome: "GBR Convites"
+        contato: 312321321
+        quantidade_convites: 15
+        preco_unidade: R$3213,21        
+    }
+
+    lua_de_mel: {
+        local: "Paris"
+        hospedagem: "La Fonte Hotel"
+        contato_hospedagem: 327183210
+        preco_total: R$5000,00
+        data_ida: 12/12/1222
+        data_volta: 13/12/2123
+        valor_passagem: R$32131,20
+    }
+
+
+]

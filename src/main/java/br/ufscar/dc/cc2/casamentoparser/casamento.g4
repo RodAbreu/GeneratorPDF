@@ -66,7 +66,7 @@ listaServicos:
 ;
 
 fotografo:
-    '{' 
+    '{'
         'nome:' STRING
         'contato:' NUM_INT
         'preco:' 'R$' NUM_REAL
@@ -116,7 +116,7 @@ decoracao:
         'nome:' STRING
         'contato:' NUM_INT
         'preco:' 'R$' NUM_REAL
-        'itens_decoracao:' STRING(',' STRING)*
+        'itens_decoracao:' STRING (',' STRING)*
     '}'
 ;
 

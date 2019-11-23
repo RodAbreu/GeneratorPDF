@@ -23,7 +23,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         this.doc = doc;
     }
     
-    
+   //professor que fez
 //    @Override
 //    public Void visitPadrinho(casamentoParser.PadrinhoContext ctx) {
 //        doc.add(new Paragraph("Padrinhos:").setFontSize(16));
@@ -67,13 +67,17 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         return super.visitListaConvidados(ctx);        
     }
     
-//    @Override
-//    public Void visitListaServicos(casamentoParser.ListaServicosContext ctx){
-//        doc.add(new Paragraph("Serviços").setFontSize(16));
-//        
-//        if(ctx. ){
-//            
-//        }
-//        return super.visitListaServicos(ctx);
-//    }
+    @Override
+    public Void visitListaServicos(casamentoParser.ListaServicosContext ctx){
+        doc.add(new Paragraph("Serviços").setFontSize(16));
+        doc.add(new Paragraph("Fotografo").setFontSize(12));
+        for(int i = 0; i < ctx.fotografo().size(); i++ ){
+            doc.add(new Paragraph(ctx.fotografo(i).getText()));
+        }
+        doc.add(new Paragraph("Convites").setFontSize(12));
+        for(int i = 0; i < ctx.convites().size(); i++ ){
+            doc.add(new Paragraph(ctx.convites(i).getText()));
+        }
+        return super.visitListaServicos(ctx);
+    }
 }
