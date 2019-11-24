@@ -5,11 +5,11 @@ import java.util.List;
 
 public class PilhaDeTabelas {
 
-    private LinkedList<TabelaDeSimbolos> pilha;
+    private final LinkedList<TabelaDeSimbolos> pilha;
     private List<EntradaTabelaDeSimbolos> simbolos;
 
     public PilhaDeTabelas() {
-        pilha = new LinkedList<TabelaDeSimbolos>();
+        pilha = new LinkedList<>();
     }
 
     public void empilhar(TabelaDeSimbolos ts) {
@@ -20,13 +20,8 @@ public class PilhaDeTabelas {
         return pilha.peek();
     }
 
-    public boolean existeSimbolo(String nome) {
-        for (TabelaDeSimbolos ts : pilha) {
-            if (ts.existeSimbolo(nome)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean existeSimbolo(String sigla) {
+        return pilha.stream().anyMatch((ts) -> (ts.existeSimbolo(sigla)));
     }
 
     public void desempilhar() {

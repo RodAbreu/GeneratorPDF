@@ -17,7 +17,7 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import t1cc2.SaidaParser;
+import br.ufscar.dc.cc2.casamentoparser.SaidaParser;
 
 /**
  *
@@ -46,20 +46,18 @@ public class Main {
         //parser.addErrorListener(new ErrorListener(out));
         casamentoParser.ProgramaContext arvore = parser.programa();
         
-        //analise semantica
-        if(!out.isModificado()){
-            CasamentoSemanticAnalyser semantico = new CasamentoSemanticAnalyser(out);
-            semantico.visitPrograma(arvore);
-        }
-
         document.add(new Paragraph("Documento gerado"));
         
+        //analise semantica
+        CasamentoSemanticAnalyser semantico = new CasamentoSemanticAnalyser(document);
+        semantico.visitPrograma(arvore);
         
-        
+        //gerador de codigo (pdf)
         CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
         cpg.visit(arvore);
-        
         document.close();
+        
+        
 
     }
 

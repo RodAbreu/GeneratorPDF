@@ -1,23 +1,39 @@
-package t1cc2;
+package br.ufscar.dc.cc2.generatorpdf;
 
 public class EntradaTabelaDeSimbolos {
-    private String nome, tipo;
+    private String sigla, casal;
+    private String presente, site;
+    private String[] siglas;
     
-    public EntradaTabelaDeSimbolos(String nome, String tipo) {
-        this.nome = nome;
-        this.tipo = tipo;
+    public EntradaTabelaDeSimbolos(String sigla, String casal) {
+        this.sigla = sigla;
+        this.casal = casal;
     }
     
-    public String getNome() {
-        return nome;
+    public EntradaTabelaDeSimbolos(String presente, String site, String sigla){
+        this.presente = presente;
+        this.site = site;
+        this.sigla = sigla;
     }
     
-    public String getTipo() {
-        return tipo;
+    public String getSigla() {
+        return sigla;
+    }
+    
+    public String getCasal() {
+        return casal;
+    }
+    
+    public String getPresente(){
+        return presente;
+    }
+    
+    public String getSite(){
+        return site;
     }
     
     @Override
     public String toString() {
-        return nome+"("+tipo+")";
+        return sigla+"("+casal+")";
     }
 }

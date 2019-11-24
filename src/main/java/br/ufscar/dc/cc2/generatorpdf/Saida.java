@@ -1,4 +1,4 @@
-package t1cc2;
+package br.ufscar.dc.cc2.generatorpdf;
 
 public class Saida {
     private static StringBuffer texto = new StringBuffer();

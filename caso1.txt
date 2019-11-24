@@ -1,17 +1,22 @@
-casamento: "Joao e Maria"
+casamento: "Ana e Rafael"
 convidados: 250
 data:20/10/2020
 padrinhos: [
     pj: "Paulo e Joana"
     cs: "Carlos e Suzana"
+	pa: "Pedro e Amanda"
+	rg: "Rodrigo e Gabrieli"
+	ab: "Afonso e Barbara"
+	cd: "Camilo e Daniela"
+	mn: "Mauricio e Natalia"
 ]
 presentes: [
-    { "Travessa de Inox", "http://www.americanas.com/p12313", [pj, cs] }
-    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [] }
-    { "Viagem para o Sul", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Chácara do Lucredio  ", "http://www.americanas.com/p12313", [] }
+    { "Travessa de Inox", "http://www.americanas.com/p12313", [pj] }
+    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [ab] }
+    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rg] }
+    { "Viagem para o Sul", "http://www.americanas.com/p12313", [pj] }
+    { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [pa] }
+    { "Viagem para Chácara do Lucredio  ", "http://www.americanas.com/p12313", [mn] }
 ]
 convidados: [
     "Pai do João",
