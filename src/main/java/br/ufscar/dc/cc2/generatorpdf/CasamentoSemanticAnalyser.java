@@ -16,68 +16,69 @@ import com.itextpdf.layout.element.Paragraph;
  * @author Gabrieli Santos
  */
 public class CasamentoSemanticAnalyser extends casamentoBaseVisitor<Void> {
+
     PilhaDeTabelas pilhaDeTabelas = new PilhaDeTabelas();
-    
+
     //PilhaDeTabelas pilhaDeTabelas = new PilhaDeTabelas;
     Document doc;
-    
-    public CasamentoSemanticAnalyser(Document doc){
+
+    public CasamentoSemanticAnalyser(Document doc) {
         this.doc = doc;
     }
-    
+
     @Override
-    public Void visitPrograma(casamentoParser.ProgramaContext ctx){
+    public Void visitPrograma(casamentoParser.ProgramaContext ctx) {
         pilhaDeTabelas.empilhar(new TabelaDeSimbolos("global"));
         super.visitPrograma(ctx);
         pilhaDeTabelas.desempilhar();
-               
+
         return null;
     }
-    
-    @Override 
-    public Void visitListaPresentes(casamentoParser.ListaPresentesContext ctx){
+
+    @Override
+    public Void visitListaPresentes(casamentoParser.ListaPresentesContext ctx) {
         pilhaDeTabelas.empilhar(new TabelaDeSimbolos("local"));
         super.visitListaPresentes(ctx);
         pilhaDeTabelas.desempilhar();
-               
+
         return null;
     }
-    
+
     @Override
-    public Void visitPadrinho(casamentoParser.PadrinhoContext ctx){
+    public Void visitPadrinho(casamentoParser.PadrinhoContext ctx) {
         String textoSigla = ctx.NOME().getText();
         String textoCasal = ctx.STRING().getText();
-        
+
         //se a sigla de padrinho ja esta na tabela de simbolos
-        if(pilhaDeTabelas.existeSimbolo(textoSigla)){
+        if (pilhaDeTabelas.existeSimbolo(textoSigla)) {
             doc.add(new Paragraph("A sigla " + textoSigla + " ja foi atribuida anteriormente para outro casal de padrinhos").setFontSize(8).setFontColor(Color.RED));
-        }
-        else{
+        } else {
             pilhaDeTabelas.topo().adicionarSimbolo(textoSigla, textoCasal);
         }
         return null;
     }
-    
+
     @Override
-    public Void visitPresente(casamentoParser.PresenteContext ctx){
+    public Void visitPresente(casamentoParser.PresenteContext ctx) {
         String textoPresente = ctx.descricao.getText();
         String textoSite = ctx.url.getText();
         String textoSigla = ctx.NOME(0).getText();
-       
-        if(!pilhaDeTabelas.topo().existeSimbolo(textoSigla)){
-            pilhaDeTabelas.topo().adicionarSimbolo(textoPresente, textoSite, textoSigla);  
+
+        if (!pilhaDeTabelas.existeSimbolo(textoSigla)) {
+            doc.add(new Paragraph("O casal " + textoSigla + " nao sao padrinhos").setFontSize(8).setFontColor(Color.RED));
+        } else {
+            if (!pilhaDeTabelas.topo().existeSimbolo(textoSigla)) {
+                pilhaDeTabelas.topo().adicionarSimbolo(textoPresente, textoSite, textoSigla);
+            } else {
+                doc.add(new Paragraph("O casal " + textoSigla + " foi escalado para mais de um presente").setFontSize(8).setFontColor(Color.RED));
+            }
         }
-        else{
-            doc.add(new Paragraph("O casal " + textoSigla + " foi escalado para mais de um presente").setFontSize(8).setFontColor(Color.RED));
-        }
-        
+
         /*TODO:
         * Tratar quando tiver mais de uma sigla por presente
         * Tratar quando nao tiver padrinhos alocados em um presente
-        */
-        
-    
+         */
         return null;
     }
-    
+
 }

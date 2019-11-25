@@ -12,7 +12,7 @@ padrinhos: [
 ]
 presentes: [
     { "Travessa de Inox", "http://www.americanas.com/p12313", [pj] }
-    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [ab] }
+    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [ac] }
     { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rg] }
     { "Viagem para o Sul", "http://www.americanas.com/p12313", [pj] }
     { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [pa] }
