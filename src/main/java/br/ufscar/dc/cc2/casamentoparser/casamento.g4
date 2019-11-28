@@ -29,7 +29,7 @@ listaPadrinhos:
 ;
 
 padrinho:
-    NOME ':' STRING
+    sigla=NOME ':' completo=STRING
 ;
 
 listaPresentes:
@@ -42,7 +42,7 @@ presente:
     '{'
         descricao=STRING ','
         url=STRING ','
-        '[' (NOME (',' NOME)*)? ']'
+        '[' (nome+=NOME (',' nome+=NOME)*)? ']'
     '}'
 ;
 
@@ -55,7 +55,7 @@ listaConvidados:
 listaServicos:
     'servicos:' '{'
           'fotografo:' fotografo+
-          'buffet:' buffet+
+          ('buffet:' buffet+)?
           'cerimonial:' cerimonial+
           'local:' local+
           'musica:' musica+
@@ -67,9 +67,9 @@ listaServicos:
 
 fotografo:
     '{'
-        'nome:' STRING ';'
-        'contato:' NUM_INT ';'
-        'preco:' 'R$' NUM_REAL
+        'nome:' nome=STRING
+        'contato:' contato=NUM_INT
+        'preco:' 'R$' preco=NUM_REAL
     '}'
 ;
 
@@ -91,13 +91,13 @@ cerimonial:
 
 local:
     '{'
-        'nome:' STRING
-        'endereco:' STRING
-        'contato:' NUM_INT
-        'horario_inicio:' HORARIO
-        'horario_fim:' HORARIO
+        'nome:' nome=STRING
+        'endereco:' endereco=STRING
+        'contato:' contato=NUM_INT
+        'horario_inicio:' horario_inic=HORARIO
+        'horario_fim:' horario_fim=HORARIO
         'preco:' 'R$' NUM_REAL
-        'capacidade:' NUM_INT
+        'capacidade:' capacidade=NUM_INT
     '}'
 ;
 
@@ -113,31 +113,31 @@ musica:
 
 decoracao:
     '{'
-        'nome:' STRING
+        'nome:' nome=STRING
         'contato:' NUM_INT
         'preco:' 'R$' NUM_REAL
-        'itens_decoracao:' STRING (',' STRING)*
+        'itens_decoracao:' item+=STRING (',' item+=STRING)*
     '}'
 ;
 
 convites:
     '{'
         'nome:' STRING
-        'contato:' NUM_INT
-        'quantidade_convites:' NUM_INT
+        'contato:' contato=NUM_INT
+        'quantidade_convites:' quant_convites=NUM_INT
         'preco_unidade:' 'R$' NUM_REAL
     '}'
 ;
 
 lua_de_mel:
     '{'
-        'local:' STRING
-        'hospedagem:' STRING
+        'local:' loc=STRING
+        'hospedagem:' hospedagem=STRING
         'contato_hospedagem:' NUM_INT
-        'preco_total:' 'R$' NUM_REAL
-        'data_ida:' DATA
-        'data_volta:' DATA
-        'valor_passagem:' 'R$' NUM_REAL
+        'preco_total:' 'R$' preco =NUM_REAL
+        'data_ida:' data_ida=DATA
+        'data_volta:' data_volta=DATA
+        'valor_passagem:' 'R$' passagem =NUM_REAL
     '}'
 ;
 

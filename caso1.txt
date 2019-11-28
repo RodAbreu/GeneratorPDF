@@ -4,11 +4,14 @@ data:20/10/2020
 padrinhos: [
     pj: "Paulo e Joana"
     cs: "Carlos e Suzana"
+    rm: "Rodrigo e Maísa"
+    gr: "Gabrieli e Rodolfo"
+    el: "bla bla"
 ]
 presentes: [
     { "Travessa de Inox", "http://www.americanas.com/p12313", [pj, cs] }
     { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [] }
+    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rm] }
     { "Viagem para o Sul", "http://www.americanas.com/p12313", [] }
     { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [] }
     { "Viagem para Chácara do Lucredio  ", "http://www.americanas.com/p12313", [] }
@@ -20,8 +23,8 @@ convidados: [
 servicos: {
     
     fotografo: {
-        nome: "Joao da foto";
-        contato: 123123123;
+        nome: "Joao da foto"
+        contato: 123123123
         preco: R$ 1000,00
     }
 
@@ -58,7 +61,7 @@ servicos: {
         nome: "GBR Decorações"
         contato: 3213213213
         preco: R$233,22
-        itens_decoracao: "toalha, mesa, flor"        
+        itens_decoracao: "toalha", "mesa", "flor"        
     }
 
     convites: {

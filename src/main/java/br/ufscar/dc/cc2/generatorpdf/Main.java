@@ -43,10 +43,6 @@ public class Main {
         casamentoParser parser = new casamentoParser(tokenStream);
         //parser.addErrorListener(new ErrorListener(out));
         casamentoParser.ProgramaContext arvore = parser.programa();
-
-        document.add(new Paragraph("Documento gerado"));
-        
-        
         
         CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
         cpg.visit(arvore);
