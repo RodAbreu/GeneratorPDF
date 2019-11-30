@@ -17,7 +17,6 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import br.ufscar.dc.cc2.casamentoparser.SaidaParser;
 
 /**
  *
@@ -28,7 +27,6 @@ public class Main {
     public static void main(String args[]) throws IOException {
         String casamentoFile = args[0];
         File pdfFile = new File(args[1]);
-        SaidaParser out = new SaidaParser();
         
         //System.out.println(pdfFile.getAbsolutePath());
 
@@ -52,10 +50,12 @@ public class Main {
         CasamentoSemanticAnalyser semantico = new CasamentoSemanticAnalyser(document);
         semantico.visitPrograma(arvore);
         
-        //gerador de codigo (pdf)
-        CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
-        cpg.visit(arvore);
-        document.close();
+        if(!semantico.isErroSemantico()) {
+            //gerador de codigo (pdf)
+            CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
+            cpg.visit(arvore);
+        }
+            document.close();
         
         
 

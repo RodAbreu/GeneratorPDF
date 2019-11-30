@@ -3,6 +3,7 @@ convidados: 250
 data:20/10/2020
 padrinhos: [
     pj: "Paulo e Joana"
+	pj: "Paulo e Joana"
     cs: "Carlos e Suzana"
 	pa: "Pedro e Amanda"
 	rg: "Rodrigo e Gabrieli"
