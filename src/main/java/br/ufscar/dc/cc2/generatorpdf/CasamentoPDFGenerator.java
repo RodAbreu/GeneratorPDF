@@ -42,20 +42,21 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     float custoLocal;
     float custoConvites;
     float custoLuaDeMel;
+    float orcamentoDisponivel;
         
 
     public CasamentoPDFGenerator(Document doc) {
         this.doc = doc;
         this.presentes_nao_atribuidos = new ArrayList();
         this.padrinhos_nao_atribuidos = new ArrayList();
-        p.addTabStops(new TabStop(56f,TabAlignment.LEFT));
-        float custoFotografo = 0;
-        float custoDecoracao = 0;
-        float custoBuffet = 0;
-        float custoCerimonial = 0;
-        float custoLocal = 0;
-        float custoConvites = 0;
-        float custoLuaDeMel = 0;
+        this.custoFotografo = 0;
+        this.custoDecoracao = 0;
+        this.custoBuffet = 0;
+        this.custoCerimonial = 0;
+        this.custoLocal = 0;
+        this.custoConvites = 0;
+        this.custoLuaDeMel = 0;
+        this.orcamentoDisponivel = 0;
     }
     
     public Void visitTitulo(casamentoParser.TituloContext ctx){
@@ -64,28 +65,27 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     }
     
     public Void visitNumConvidados(casamentoParser.NumConvidadosContext ctx){
-//        doc.add(Chunk.TABBING);
-//        doc.add(new Chunk("Hello World with tab."));
         Paragraph p = new Paragraph();
         doc.add(new Paragraph("Número de convidados: "+ctx.NUM_INT().getText()).setFontSize(16));
         return super.visitNumConvidados(ctx);
     }
     
     public Void visitData(casamentoParser.DataContext ctx){
-        doc.add(new Paragraph("Data do casamento: "+ctx.DATA().getText()).setFontSize(16));
+        doc.add(new Paragraph("\nData do casamento: "+ctx.DATA().getText()).setFontSize(16));
         return super.visitData(ctx);
     }
     
     public Void visitOrcamento(casamentoParser.OrcamentoContext ctx){
-        doc.add(new Paragraph("Orçamento disponivel: R$"+ctx.NUM_REAL().getText()).setFontSize(16));
+        doc.add(new Paragraph("\nOrçamento disponivel: R$"+ctx.NUM_REAL().getText()).setFontSize(16));
+        orcamentoDisponivel = Float.valueOf(ctx.NUM_REAL().getText());
         return super.visitOrcamento(ctx);
     }
     
     @Override
     public Void visitListaPadrinhos(casamentoParser.ListaPadrinhosContext ctx){
-        doc.add(new Paragraph("Lista de padrinhos:").setFontSize(16));
+        doc.add(new Paragraph("\nLista de padrinhos:").setFontSize(16));
         for(int i = 0; i < ctx.padrinho().size(); i++ ){
-            doc.add(new Paragraph("Casal de padrinhos "+(i+1)+": "+ctx.padrinho(i).completo.getText()+"\n Sigla correspondente: "+ctx.padrinho(i).sigla.getText()).setFontSize(12));
+            doc.add(new Paragraph("\nCasal de padrinhos "+(i+1)+": "+ctx.padrinho(i).completo.getText()+"\n Sigla correspondente: "+ctx.padrinho(i).sigla.getText()).setFontSize(12));
             //populando a lista de padrinhos
             this.padrinhos_nao_atribuidos.add(ctx.padrinho(i).sigla.getText());
         }        
@@ -94,28 +94,18 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     
     public Void visitListaPresentes(casamentoParser.ListaPresentesContext ctx){
         
-        doc.add(new Paragraph("Lista de presentes:").setFontSize(16));
+        doc.add(new Paragraph("\nLista de presentes:").setFontSize(16));
         float [] pointColumnWidths = {50F,250F, 220F};
         Table tablePresentes = new Table(pointColumnWidths);        
         tablePresentes.addCell(new Cell().add(("")));
         tablePresentes.addCell(new Cell().add(("Descrição")));
         tablePresentes.addCell(new Cell().add(("URL")));
         //aprensentando todos os presentes
-        
-        String auxS;
+
         for(int i=0; i<ctx.presente().size(); i++ ){
-            auxS = "";
             tablePresentes.addCell(new Cell().add((i+1+"")));
             tablePresentes.addCell(new Cell().add(ctx.presente(i).descricao.getText()));
             tablePresentes.addCell(new Cell().add(ctx.presente(i).url.getText()));
-//            tablePresentes.addCell(new Cell().add(ctx.presente(i).descricao.getText()));
-//            doc.add(new Paragraph((i+1)+": "+ctx.presente(i).descricao.getText()));
-//            doc.add(new Paragraph("URL de sugestão: "+ctx.presente(i).url.getText()).setFontSize(12));      
-//            for(int j=0;j<ctx.presente(i).NOME().size();j++){
-//                auxS += ctx.presente(i).NOME().get(j).getText()+"; ";
-////                doc.add(new Paragraph("Sigla dos padrinhos atribuidos: "+ctx.presente(i).NOME().get(j).getText()).setFontSize(12));   
-//            }
-//            tablePresentes.addCell(new Cell().add(auxS));
         }
         
         tablePresentes.setKeepTogether(true);
@@ -197,8 +187,8 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
     
     @Override
     public Void visitListaServicos(casamentoParser.ListaServicosContext ctx){
-        doc.add(new Paragraph("Serviços").setFontSize(16));
-        doc.add(new Paragraph("Fotografo").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nServiços:").setFontSize(18).setBold());
+        doc.add(new Paragraph("\nFotografo").setFontSize(14).setUnderline());
         
         //-----------------------FOTOGRAFO
         
@@ -215,9 +205,6 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
             tableFotografo.addCell(new Cell().add(ctx.fotografo(i).contato.getText()));
             tableFotografo.addCell(new Cell().add("R$: "+ctx.fotografo(i).preco.getText()));
             custoFotografo += Float.valueOf(ctx.fotografo(i).preco.getText());
-//            doc.add(new Paragraph("Nome: "+ctx.fotografo(i).nome.getText()));
-//            doc.add(new Paragraph("Contato: "+ctx.fotografo(i).contato.getText()));
-//            doc.add(new Paragraph("Preço: "+ctx.fotografo(i).preco.getText()));
         }
         
         tableFotografo.setKeepTogether(true);
@@ -231,7 +218,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         tableFotografo.addCell(new Cell().add("Contato"));
         tableFotografo.addCell(new Cell().add("Preço"));
         
-        doc.add(new Paragraph("Buffet").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nBuffet").setFontSize(14).setUnderline());
         for(int i = 0; i < ctx.buffet().size(); i++ ){
             //Nome
             tableBuffet.addCell(new Cell().add(ctx.buffet(i).STRING().getText()));
@@ -256,7 +243,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         tableCerimonial.addCell(new Cell().add("Contato"));
         tableCerimonial.addCell(new Cell().add("Preço"));
         
-        doc.add(new Paragraph("Cerimonial").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nCerimonial").setFontSize(14).setUnderline());
         for(int i = 0; i < ctx.cerimonial().size(); i++ ){
 //            //Nome
 //            doc.add(new Paragraph("Nome: "+ctx.cerimonial(i).STRING().getText()));
@@ -279,7 +266,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         float [] pointColumnWidths2 = {120F,120F,120F,120F};
         
         Table tableLocal = new Table(pointColumnWidths2);
-        doc.add(new Paragraph("Local").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nLocal").setFontSize(14).setUnderline());
         
 //        tableLocal.addCell(new Cell().add("Empresa"));
 //        tableLocal.addCell(new Cell().add("Endereço"));
@@ -319,7 +306,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         float [] pointColumnWidths3 = {150F, 200F, 120F};
         
         Table tableDecoracao = new Table(pointColumnWidths3);
-        doc.add(new Paragraph("Decoração").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nDecoração").setFontSize(14).setUnderline());
 
         for(int i = 0; i < ctx.decoracao().size(); i++ ){
             //Nome
@@ -342,7 +329,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         
         //-----------------------CONVITES
         
-        doc.add(new Paragraph("Convites").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nConvites").setFontSize(14).setUnderline());
         
         for(int i = 0; i < ctx.convites().size(); i++ ){
             //nome
@@ -354,7 +341,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
             
         }   
         
-        doc.add(new Paragraph("Lua de mel").setFontSize(14).setBold());
+        doc.add(new Paragraph("\nLua de mel").setFontSize(14).setUnderline());
         
         float [] pointColumnWidths4 = {120F, 120F, 120F, 120F};
         
@@ -395,7 +382,7 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         doc.add(tableLuaDeMel);
         
         
-        doc.add(new Paragraph("\nOrçamento").setFontSize(16));
+        doc.add(new Paragraph("\nOrçamento").setFontSize(16).setBold());
 //        doc.add(new Paragraph(String.valueOf(custoTotal)));
 
         float [] pointColumnWidthsCustos = {200F, 200F};
@@ -419,6 +406,12 @@ public class CasamentoPDFGenerator extends casamentoBaseVisitor<Void>{
         tableCustos.addCell(new Cell().add("R$"+custoConvites)); 
         tableCustos.addCell(new Cell().add("Lua de Mel"));
         tableCustos.addCell(new Cell().add("R$"+custoLuaDeMel)); 
+        tableCustos.addCell(new Cell().add("Orçamento disponível"));
+        if(orcamentoDisponivel>(custoConvites+custoDecoracao+custoLocal+custoCerimonial+custoLuaDeMel+custoFotografo+custoBuffet)){
+            tableCustos.addCell(new Cell().add("R$"+orcamentoDisponivel).setFontColor(Color.BLUE)); 
+        }else{
+            tableCustos.addCell(new Cell().add("R$"+orcamentoDisponivel).setFontColor(Color.RED)); 
+        }
         tableCustos.addCell(new Cell().add("Total"));
         tableCustos.addCell(new Cell().add("R$"+(custoConvites+custoDecoracao+custoLocal+custoCerimonial+custoLuaDeMel+custoFotografo+custoBuffet)).setBold());
         tableCustos.setKeepTogether(true);

@@ -7,8 +7,8 @@ padrinhos: [
     cs: "Carlos e Suzana"
     rm: "Rodrigo e Maísa"
     gr: "Gabrieli e Rodolfo"
-    el: "bla bla"
-    eita: "julia e julia"
+    el: "Ednaldo e Luciana"
+    jj: "Julia e Joana"
 ]
 presentes: [
     { "Travessa de Inox", "http://www.americanas.com/p12313", [pj, cs] }
@@ -16,7 +16,7 @@ presentes: [
     { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rm] }
     { "Viagem para o Sul", "http://www.americanas.com/p12313", [] }
     { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Chácara do Lucredio ", "http://www.americanas.com/p12313", [] }
+    { "Cama de casal", "http://www.americanas.com/p12313", [] }
     { "Ar condicionado ", "http://www.americanas.com/p12313", [] }
     { "Ventilador portátel ", "http://www.americanas.com/p12313", [] }
     { "Armário", "http://www.americanas.com/p12313", [] }
@@ -45,7 +45,7 @@ servicos: {
         preco: R$ 37.00
     }
     cerimonial: {   
-        nome: "olar"
+        nome: "Lu Cerimonial"
         contato: 2311
         preco: R$ 20.00
     }
@@ -69,14 +69,14 @@ servicos: {
         musica: "Ai aiai ai aiaia iai ai"        
     }
     decoracao: {
-        nome: "GBR Decorações"
+        nome: "Arte nobre"
         contato: 3213213213
         preco: R$233.22
         itens_decoracao: "toalha", "mesa", "flor"        
     }
 
     convites: {
-        nome: "GBR Convites"
+        nome: "Marina Convites"
         contato: 312321321
         quantidade_convites: 15
         preco_unidade: R$3213.21        
