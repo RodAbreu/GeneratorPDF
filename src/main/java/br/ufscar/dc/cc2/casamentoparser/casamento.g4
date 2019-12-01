@@ -4,6 +4,7 @@ programa:
     titulo
     numConvidados
     data
+    orcamento
     listaPadrinhos
     listaPresentes
     listaConvidados
@@ -20,6 +21,10 @@ numConvidados:
 
 data:
     'data:' DATA
+;
+
+orcamento:
+	'orcamento:' 'R$' NUM_REAL
 ;
 
 listaPadrinhos:

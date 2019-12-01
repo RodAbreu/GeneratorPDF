@@ -45,6 +45,13 @@ public class casamentoBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitOrcamento(casamentoParser.OrcamentoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitListaPadrinhos(casamentoParser.ListaPadrinhosContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

@@ -1,6 +1,7 @@
 casamento: "Joao e Maria"
 convidados: 250
 data:20/10/2020
+orcamento: R$ 15000.00
 padrinhos: [
     pj: "Paulo e Joana"
     cs: "Carlos e Suzana"

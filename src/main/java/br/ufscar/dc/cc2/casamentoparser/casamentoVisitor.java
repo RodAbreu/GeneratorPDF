@@ -35,6 +35,12 @@ public interface casamentoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitData(casamentoParser.DataContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link casamentoParser#orcamento}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrcamento(casamentoParser.OrcamentoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link casamentoParser#listaPadrinhos}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

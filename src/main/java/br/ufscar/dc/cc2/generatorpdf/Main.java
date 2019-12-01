@@ -27,10 +27,6 @@ public class Main {
     public static void main(String args[]) throws IOException {
         String casamentoFile = args[0];
         File pdfFile = new File(args[1]);
-        
-        //System.out.println(pdfFile.getAbsolutePath());
-
-        //pdfFile.getParentFile().mkdirs();
 
         FileOutputStream fos = new FileOutputStream(pdfFile);
         PdfWriter writer = new PdfWriter(fos);
@@ -41,11 +37,15 @@ public class Main {
         casamentoLexer lexer = new casamentoLexer(input);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         casamentoParser parser = new casamentoParser(tokenStream);
-        //parser.addErrorListener(new ErrorListener(out));
         casamentoParser.ProgramaContext arvore = parser.programa();
         
-        CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
-        cpg.visit(arvore);
+        CasamentoSemanticAnalyser semantico = new CasamentoSemanticAnalyser(document);
+        semantico.visitPrograma(arvore);  
+        
+        if(!semantico.isErroSemantico()){
+            CasamentoPDFGenerator cpg = new CasamentoPDFGenerator(document);
+            cpg.visit(arvore);            
+        }
         
         document.close();
 

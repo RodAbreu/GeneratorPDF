@@ -64,6 +64,18 @@ public class casamentoBaseListener implements casamentoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOrcamento(casamentoParser.OrcamentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrcamento(casamentoParser.OrcamentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterListaPadrinhos(casamentoParser.ListaPadrinhosContext ctx) { }
 	/**
 	 * {@inheritDoc}

@@ -48,6 +48,16 @@ public interface casamentoListener extends ParseTreeListener {
 	 */
 	void exitData(casamentoParser.DataContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link casamentoParser#orcamento}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrcamento(casamentoParser.OrcamentoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link casamentoParser#orcamento}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrcamento(casamentoParser.OrcamentoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link casamentoParser#listaPadrinhos}.
 	 * @param ctx the parse tree
 	 */
