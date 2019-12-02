@@ -1,36 +1,28 @@
-casamento: "Joao e Maria"
+casamento: "Ana e Rafael"
 convidados: 250
 data:20/10/2020
 orcamento: R$ 15000.00
 padrinhos: [
     pj: "Paulo e Joana"
+	pj: "Paulo e Joana"
     cs: "Carlos e Suzana"
-    rm: "Rodrigo e Maísa"
-    gr: "Gabrieli e Rodolfo"
-    el: "Ednaldo e Luciana"
-    jj: "Julia e Joana"
-    ml: "Matheus e Luana"
+	pa: "Pedro e Amanda"
+	rg: "Rodrigo e Gabrieli"
+	ab: "Afonso e Barbara"
+	cd: Camilo e Daniela
+	mn: "Mauricio e Natalia"
 ]
 presentes: [
-    { "Travessa de Inox", "http://www.americanas.com/p12313", [pj, cs] }
-    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rm] }
-    { "Viagem para o Sul", "http://www.americanas.com/p12313", [] }
-    { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [] }
-    { "Cama de casal", "http://www.americanas.com/p12313", [] }
-    { "Ar condicionado ", "http://www.americanas.com/p12313", [] }
-    { "Ventilador portátel ", "http://www.americanas.com/p12313", [] }
-    { "Armário", "http://www.americanas.com/p12313", [] }
-    { "Purificador de água", "http://www.americanas.com/p12313", [] }
+    { "Travessa de Inox", "http://www.americanas.com/p12313", [pj] }
+    { "Viagem para Poços de Caldas", "http://www.americanas.com/p12313", [ab] }
+    { "Viagem para Nordeste", "http://www.americanas.com/p12313", [rg] }
+    { "Viagem para o Sul", "http://www.americanas.com/p12313", [cs] }
+    { "Viagem para Casa da Gabi", "http://www.americanas.com/p12313", [pa] }
+    { "Viagem para Chácara do Lucredio  ", "http://www.americanas.com/p12313", [mn] }
 ]
 convidados: [
     "Pai do João",
-    "Vizinha da avó",
-    "Julia",
-    "Mariana",
-    "Catito",
-    "João",
-    "Claudio"
+    "Vizinha da avó"
 ]
 servicos: {
     
@@ -46,7 +38,7 @@ servicos: {
         preco: R$ 37.00
     }
     cerimonial: {   
-        nome: "Lu Cerimonial"
+        nome: "olar"
         contato: 2311
         preco: R$ 20.00
     }
@@ -70,14 +62,14 @@ servicos: {
         musica: "Ai aiai ai aiaia iai ai"        
     }
     decoracao: {
-        nome: "Arte nobre"
+        nome: "GBR Decorações"
         contato: 3213213213
         preco: R$233.22
-        itens_decoracao: "toalha", "mesa", "flor"        
+        itens_decoracao: "toalha, mesa, flor"        
     }
 
     convites: {
-        nome: "Marina Convites"
+        nome: "GBR Convites"
         contato: 312321321
         quantidade_convites: 15
         preco_unidade: R$3213.21        
@@ -90,7 +82,7 @@ servicos: {
         preco_total: R$5000.00
         data_ida: 12/12/1222
         data_volta: 13/12/2123
-        valor_passagem: R$10131.20
+        valor_passagem: R$32131.20
     }
 
 
